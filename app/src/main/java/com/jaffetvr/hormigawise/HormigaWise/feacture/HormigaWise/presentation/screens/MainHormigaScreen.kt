@@ -13,11 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.data.dataSource.local.GastoEntity
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.viewModels.ExchangeViewModel
-import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.viewModels.ExchangeViewModelFactory
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.components.HormigaInputForm
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.components.HormigaGastoItem
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.components.ProductDialog
@@ -26,8 +25,12 @@ import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainHormigaScreen(factory: ExchangeViewModelFactory) {
-    val viewModel: ExchangeViewModel = viewModel(factory = factory)
+fun MainHormigaScreen(
+    // MODIFICADO: Ahora el ViewModel se inyecta automáticamente con hiltViewModel()
+    viewModel: ExchangeViewModel = hiltViewModel()
+) {
+    // ELIMINADO: La línea val viewModel: ExchangeViewModel = viewModel(factory = factory)
+
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
     val gastosPorDia by viewModel.gastosAgrupados.collectAsStateWithLifecycle()
 

@@ -1,4 +1,4 @@
-package com.jaffetvr.hormigawise.HormigaWise.core.di
+/*package com.jaffetvr.hormigawise.HormigaWise.core.di
 
 import android.content.Context
 import androidx.room.Room
@@ -43,4 +43,4 @@ class AppContainer(context: Context) {
     val exchangeRepository: ExchangeRepository by lazy {
         ExchangeRepositoryImpl(frankfurterApi)
     }
-}
+}*/

@@ -2,8 +2,9 @@ package com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.domain.usesCas
 
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.domain.entitie.ExchangeRate
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.domain.repository.ExchangeRepository
+import javax.inject.Inject
 
-class GetExchangeRatesUseCase(
+class GetExchangeRatesUseCase @Inject constructor(
     private val repository: ExchangeRepository
 ) {
     suspend operator fun invoke(base: String, symbols: String): Result<List<ExchangeRate>> {

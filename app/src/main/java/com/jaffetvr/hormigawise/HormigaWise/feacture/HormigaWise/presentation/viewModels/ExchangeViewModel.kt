@@ -7,14 +7,17 @@ import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.data.dataSource
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.domain.usesCases.GetExchangeRatesUseCase
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.domain.usesCases.GetProductSuggestionUseCase
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.screens.ExchangeUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-class ExchangeViewModel(
+@HiltViewModel
+class ExchangeViewModel @Inject constructor(
     private val getExchangeRatesUseCase: GetExchangeRatesUseCase,
-    private val getProductSuggestionUseCase: GetProductSuggestionUseCase, // Usamos tu caso de uso real
+    private val getProductSuggestionUseCase: GetProductSuggestionUseCase,
     private val gastoDao: GastoDao
 ) : ViewModel() {
 
@@ -42,6 +45,7 @@ class ExchangeViewModel(
                     }
                 }
             } catch (e: Exception) {
+                // Manejar error si es necesario
             }
         }
     }
@@ -59,7 +63,6 @@ class ExchangeViewModel(
             val listaDeRoom = gastoDao.getAllGastos()
             val totalMxn = listaDeRoom.sumOf { it.montoMxn }
 
-
             _uiState.update { it.copy(
                 gastosHormiga = listaDeRoom,
                 totalGastosMxn = totalMxn
@@ -70,7 +73,7 @@ class ExchangeViewModel(
                 val totalUsd = totalMxn * tasa
 
                 if (totalUsd > 0.5) {
-                    val sugerencia = getProductSuggestionUseCase(totalUsd) // Tu UseCase real
+                    val sugerencia = getProductSuggestionUseCase(totalUsd)
 
                     if (sugerencia != null) {
                         _uiState.update { it.copy(productoSugerido = sugerencia) }

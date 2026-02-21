@@ -1,4 +1,4 @@
-package com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.di
+/*package com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.di
 
 import com.jaffetvr.hormigawise.HormigaWise.core.di.AppContainer
 import com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.domain.usesCases.GetExchangeRatesUseCase
@@ -23,4 +23,4 @@ class HormigaWiseModule(
             gastoDao = appContainer.gastoDao
         )
     }
-}
+}*/

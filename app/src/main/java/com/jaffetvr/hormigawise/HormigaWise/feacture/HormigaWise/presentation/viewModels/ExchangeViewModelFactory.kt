@@ -1,4 +1,4 @@
-package com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.viewModels
+/*package com.jaffetvr.hormigawise.HormigaWise.feacture.HormigaWise.presentation.viewModels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -23,4 +23,4 @@ class ExchangeViewModelFactory(
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
-}
+}*/
